@@ -24,9 +24,9 @@ def main():
 def parser():
     regex_dir = re.compile(r'Directory\sof\s(.*)', re.IGNORECASE)
 
-    with open('../files/OGCAP-FILENET01-W.txt', 'r') as file:
+    with open('../files/OGCWM-916-E.txt', 'r', errors="ignore") as file:
         hostname = file.name.split('/')[2].split(".")[0]
-        with open(f'..\output\{hostname}.csv', 'w') as output:
+        with open(f'..\output\Host - {hostname}.csv', 'w') as output:
             output.write(
                 'Data Type Found, HostName, File Name, Directory Location, Date, Time, Type, Size, File Extension\n')
 
@@ -88,19 +88,23 @@ def parse_filename(type, str):
 def writer(hostname, date, time, type, name, size, extension, directory, output_file, keywords):
     if not keywords:
         keywords = "No keywords found"
+    directory = directory.replace(',', ' ')
+    name = name.replace(',', ' ')
     output_file.write(f"{keywords}, {hostname}, {name}, {directory}, {date}, {time}, {type}, {size}, {extension}\n")
     return
 
 
 def keyword_finder(line):
-    keyword_list = ["finance", "marketing", "tax", "technology", "resume"]
-    keywords_found = []
+    keyword_list = ["finance", "marketing", "tax", "technology", "resume", "Social Insurance Number",
+                    "Record of Employment", "Cheque", "Direct Deposit", "Bank Account", "Bank Statement", "Passport",
+                    "Credit Card", "Mastercard", "Wire Transfer", "Electronic Funds Transfer"]
+    keywords_found = ""
 
     for keyword in keyword_list:
         regex = re.escape(keyword)
 
         if re.search(regex, line, re.IGNORECASE):
-            keywords_found.append(regex)
+            keywords_found = f"{keywords_found} | {regex}"
 
     return keywords_found
 
