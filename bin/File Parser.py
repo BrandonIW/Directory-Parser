@@ -2,7 +2,6 @@ import re
 
 """
 Parses the files formatted as such:
-
     Directory: C:\
 
 
@@ -16,7 +15,7 @@ def main():
     """ Build Generator Object. Open files. Loop through Generator until EOF and write to output file """
     directory = ""
 
-    with open("../files/Done - ODCVD-APP-P11.txt", "r", encoding="UTF-8") as file:
+    with open("../files/Done - File.txt", "r", encoding="UTF-8") as file:
         hostname = file.name.split('/')[2].split(".")[0]
         generator_obj = record_generator(file)
 
@@ -117,13 +116,7 @@ def line_formatter(line, output, directory, hostname, type):
 
 def keyword_finder(filename):
     """ Searches filename for keywords """
-    keyword_list = ["Social Insurance Number", "N.A.S", "Relevé d’emploi" "Record of Employment", "Cheque",
-                    "Direct Deposit", "Bank Account", "Bank Statement", "Passport", "Credit Card", "Mastercard",
-                    "Electronic Funds Transfer", "Prognosis", "Record of Employment", "Visa", "Pre-Authorized Debit",
-                    "health card", "Payroll", "OTIP ID", "Payroll ID", "Numéro d’assurance sociale",
-                    "Passeport", "Carte de crédit", "Numéro du compte bancaire", "Numéro de compte", "Relevé bancaire",
-                    "Chèque", "Virement automatique", "Prélèvement automatique", "Carte santé", "Diagnostic",
-                    "Pronostic", "Virement électronique de fonds", "Numéro de paie", "Numéro d’identification du RAEO",
+    keyword_list = ["INSERT KEYWORDS"
                     ]
 
     # Acronym Regex
