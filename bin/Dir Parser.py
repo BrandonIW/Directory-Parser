@@ -24,7 +24,7 @@ def main():
 def parser():
     regex_dir = re.compile(r'Directory\sof\s(.*)', re.IGNORECASE)
 
-    with open('../files/OGCWM-916-E.txt', 'r', errors="ignore") as file:
+    with open('../files/File.txt', 'r', errors="ignore") as file:
         hostname = file.name.split('/')[2].split(".")[0]
         with open(f'..\output\Host - {hostname}.csv', 'w') as output:
             output.write(
